@@ -8,13 +8,19 @@ import { AppMaterialModule } from './components/shared/app-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from 'src/app/routes/app-routing.module';
 import { WixossDecksComponent } from './components/wixoss-decks/wixoss-decks.component';
+import { WixossDeckComponent } from './components/wixoss-decks/wixoss-deck/wixoss-deck.component';
+import { LoginPageComponent } from './components/page-components/login-page/login-page.component';
+import { NoPageFoundComponent } from './components/page-components/no-page-found/no-page-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WixossNavbarComponent,
     HomePageComponent,
-    WixossDecksComponent
+    WixossDecksComponent,
+    WixossDeckComponent,
+    LoginPageComponent,
+    NoPageFoundComponent
   ],
   imports: [
     BrowserModule,
