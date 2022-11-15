@@ -1,0 +1,11 @@
+/* Required to make it so the content fills the page below the nav bar */
+.appContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    .routerOutletContainer {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+}
