@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.pageContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    #userForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        #loginRegisterComponent {
+            padding-top: 5rem;
+        } 
+    }
+}

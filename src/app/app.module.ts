@@ -11,6 +11,8 @@ import { WixossDecksComponent } from './components/wixoss-decks/wixoss-decks.com
 import { WixossDeckComponent } from './components/wixoss-decks/wixoss-deck/wixoss-deck.component';
 import { LoginPageComponent } from './components/page-components/login-page/login-page.component';
 import { NoPageFoundComponent } from './components/page-components/no-page-found/no-page-found.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { LoginRegisterComponent } from './components/login-register/login-register.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { NoPageFoundComponent } from './components/page-components/no-page-found
     WixossDecksComponent,
     WixossDeckComponent,
     LoginPageComponent,
-    NoPageFoundComponent
+    NoPageFoundComponent,
+    ForgotPasswordComponent,
+    LoginRegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,21 @@
+.loginRegisterContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    #loginRegisterContents {
+        padding: 2rem;
+        .userFormHeader {
+            text-align: center;
+        }
+        #userFormGroup {
+            .userInputField {
+                display: flex;
+                flex-direction: column;
+                width: 20rem;
+                padding-bottom: 0.5rem;
+            }
+        }
+    }
+}

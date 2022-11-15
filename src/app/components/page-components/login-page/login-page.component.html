@@ -1,51 +1,5 @@
-<div>
-    <section id="newUserForm">
-        <form class="example-form" [formGroup]="userForm">
-            <div id="usernameField">
-                <mat-form-field class="" appearance="fill">
-                    <mat-label>Username</mat-label>
-                    <input type="text" matInput formControlName="usernameFormControl" placeholder="Ex. wixossGuy2891">
-                    <mat-error *ngIf="userForm.controls['usernameFormControl'].hasError('required')">
-                        Username is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div id="emailField">
-                <mat-form-field class="" appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input type="email" matInput formControlName="emailFormControl" placeholder="Ex. pat@example.com">
-                    <mat-error *ngIf="userForm.controls['emailFormControl'].hasError('email') && !userForm.controls['emailFormControl'].hasError('required')">
-                      Please enter a valid email address
-                    </mat-error>
-                    <mat-error *ngIf="userForm.controls['emailFormControl'].hasError('required')">
-                      Email is required
-                    </mat-error>
-                  </mat-form-field>
-            </div>
-            <div id="passwordField">
-                <mat-form-field class="" appearance="fill">
-                    <mat-label>Password</mat-label>
-                    <input type="password" matInput formControlName="passwordFormControl">
-                    <mat-error *ngIf="userForm.controls['passwordFormControl'].hasError('required')">
-                        Password is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div id="confirmPasswordField">
-                <mat-form-field class="" appearance="fill">
-                    <mat-label>Confirm Password</mat-label>
-                    <input type="password" matInput formControlName="confirmPasswordFormControl">
-                    <mat-error *ngIf="userForm.controls['confirmPasswordFormControl'].hasError('notMatchingPasswords') && 
-                                !userForm.controls['confirmPasswordFormControl'].hasError('required')">
-                        Passwords do not match
-                    </mat-error>
-                    <mat-error *ngIf="userForm.controls['confirmPasswordFormControl'].hasError('required')">
-                        Password is required
-                    </mat-error>
-                </mat-form-field>
-            </div>
-        </form>
+<div class="pageContent">
+    <section id="userForm">
+        <login-register id="loginRegisterComponent"></login-register>
     </section>
-
-    <button (click)="validateForm()">click me</button>
 </div>
