@@ -24,9 +24,14 @@ class FormText {
   styleUrls: ['./login-register.component.scss']
 })
 export class LoginRegisterComponent implements OnInit {
-  newUserText: FormText = new FormText('Register', 'Submit', 'Have an account?', 'Sign in here');
-  signInText: FormText = new FormText('Sign In', 'Sign In', 'Need to Register?', 'Register here');
-  forgotPasswordText: FormText = new FormText('Forgot Password?', 'Send Recovery Email', 'Have an account?', 'Sign in here');
+  formType = {
+    signIn: 'Sign In',
+    forgotPassword: 'Forgot Password',
+    register: 'Register'
+  }
+  newUserText: FormText = new FormText(this.formType.register, 'Submit', 'Have an account?', 'Sign in here');
+  signInText: FormText = new FormText(this.formType.signIn, 'Sign In', 'Need to Register?', 'Register here');
+  forgotPasswordText: FormText = new FormText(this.formType.forgotPassword, 'Send Recovery Email', 'Have an account?', 'Sign in here');
 
   formText: FormText;
 
@@ -40,20 +45,17 @@ export class LoginRegisterComponent implements OnInit {
   signIn: boolean;
   newUser: boolean;
   forgotPassword: boolean;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.newUser = false;
-    this.resetFormTo('signIn');
+    this.resetFormTo(this.formType.signIn);
   }
-
-
 
   /* FOR TESTING */
-  validateForm() {
+  onSubmit() {
     console.log(this.userForm)
   }
-
 
   passwordMatchingValidatior: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const parentForm: FormGroup | FormArray | null = control?.parent;
@@ -66,10 +68,9 @@ export class LoginRegisterComponent implements OnInit {
     if (this.newUser) { this.userForm.controls['confirmPasswordFormControl'].updateValueAndValidity(); }
   }
 
-
   resetFormTo(formType: string): void {
     switch(formType) {
-      case 'forgotPassword': {
+      case this.formType.forgotPassword: {
         this.formText = this.forgotPasswordText;
         this.forgotPassword = true;
         this.signIn = false;
@@ -78,7 +79,7 @@ export class LoginRegisterComponent implements OnInit {
           emailFormControl: new FormControl('', [Validators.required, Validators.email])});
         break;
       }
-      case 'newUser': {
+      case this.formType.register: {
         this.formText = this.newUserText;
         this.forgotPassword = false;
         this.signIn = false;
@@ -105,20 +106,17 @@ export class LoginRegisterComponent implements OnInit {
     }
   }
 
-  toggleNewUserStatus(): void {
-    if (this.newUser) {
-      this.newUser = false;
-      this.resetFormTo('signIn');
-    } else {
-      this.newUser = true;
-      this.resetFormTo('newUser');
-    }
+  getRedirectLocation(): void {
+    this.signIn ? this.resetFormTo(this.formType.register) : this.resetFormTo(this.formType.signIn);
+  }
+
+  goToForgotPassword(): void {
+    this.resetFormTo(this.formType.forgotPassword);
   }
 
   /* Notes
     Before I could use the below to add FormControls to the FormGroup.
     this.userForm.addControl('usernameFormControl', this.formBuilder.control('', [Validators.required]));
     this.userForm.addControl('confirmPasswordFormControl', this.formBuilder.control('', [Validators.required, this.passwordMatchingValidatior]));
-  
   */
 }

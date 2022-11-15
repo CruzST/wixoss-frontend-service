@@ -1,7 +1,7 @@
 <div class="loginRegisterContainer">
     <div id="loginRegisterContents">
         <h1 class="userFormHeader">{{formText.headerText}}</h1>
-        <form id="userFormGroup" [formGroup]="userForm">
+        <form id="userFormGroup" [formGroup]="userForm" (ngSubmit)="onSubmit()">
             <div *ngIf="newUser" id="usernameField" class="userInputField">
                 <mat-form-field class="" appearance="fill">
                     <mat-label>Username</mat-label>
@@ -9,7 +9,8 @@
                         type="text"
                         matInput
                         formControlName="usernameFormControl"
-                        placeholder="Ex. wixossGuy2891">
+                        placeholder="Ex. wixossGuy2891"
+                    >
                     <mat-error *ngIf="userForm.controls['usernameFormControl'].hasError('required')">
                         Username is required
                     </mat-error>
@@ -22,7 +23,8 @@
                         type="email"
                         matInput
                         formControlName="emailFormControl"
-                        placeholder="Ex. pat@example.com">
+                        placeholder="Ex. pat@example.com"
+                    >
                     <mat-error *ngIf="userForm.controls['emailFormControl'].hasError('email') && !userForm.controls['emailFormControl'].hasError('required')">
                         Please enter a valid email address
                     </mat-error>
@@ -31,7 +33,7 @@
                     </mat-error>
                     </mat-form-field>
             </div>
-            <div id="passwordField" class="userInputField">
+            <div *ngIf="!forgotPassword" id="passwordField" class="userInputField">
                 <mat-form-field class="" appearance="fill">
                     <mat-label>Password</mat-label>
                     <!--(change)="userForm.controls['confirmPasswordFormControl'].updateValueAndValidity()"-->
@@ -39,7 +41,8 @@
                         type="password"
                         matInput
                         formControlName="passwordFormControl"
-                        (change)="onPasswordChange()">
+                        (change)="onPasswordChange()"
+                    >
                     <mat-error *ngIf="userForm.controls['passwordFormControl'].hasError('required')">
                         Password is required
                     </mat-error>
@@ -51,7 +54,8 @@
                     <input
                         type="password"
                         matInput
-                        formControlName="confirmPasswordFormControl">
+                        formControlName="confirmPasswordFormControl"
+                    >
                     <mat-error *ngIf="userForm.controls['confirmPasswordFormControl'].hasError('notMatchingPasswords') && 
                                 !userForm.controls['confirmPasswordFormControl'].hasError('required')">
                         Passwords do not match
@@ -61,11 +65,33 @@
                     </mat-error>
                 </mat-form-field>
             </div>
+            <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="userForm.invalid"
+            >
+                {{formText.submitButtonText}}
+            </button>
         </form>
-        <!--This will be the submit button later-->
-        <button mat-raised-button color="primary" (click)="validateForm()">{{formText.submitButtonText}}</button>
-        <div class="formHelperText">{{formText.formHelperText}} <button mat-button color="primary">{{formText.redirectText}}</button></div>
-        <div *ngIf="signIn">Forgot your password? <button mat-button color="primary">Password reset</button></div>
-        <button (click)="toggleNewUserStatus()">toggle new user</button>
+        <div class="formHelperText">
+            {{formText.formHelperText}} 
+            <button
+                mat-button
+                color="primary"
+                (click)="getRedirectLocation()"
+            >
+                {{formText.redirectText}}
+            </button>
+        </div>
+        <div *ngIf="signIn">Forgot your password? 
+            <button
+                mat-button
+                color="primary)"
+                (click)="goToForgotPassword()"
+            >
+                Password reset
+            </button>
+        </div>
     </div>
 </div>
