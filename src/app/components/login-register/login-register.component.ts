@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-
-
+import { AuthDataService } from 'src/app/services/authentication/auth-data.service';
+import { UserRequest } from 'src/app/dto/payloads/userRequest';
+import { LoginRequest } from 'src/app/dto/payloads/loginRequest';
+import { InterceptorMessageServiceService } from 'src/app/services/interceptor-message/interceptor-message-service.service';
 
 
 class FormText {
@@ -18,6 +20,15 @@ class FormText {
   }
 }
 
+class InterceptorMessage {
+  message: string = null;
+  status: number = null;
+  constructor(message?: string, status?: number) {
+    this.message = message;
+    this.status = status;
+  }
+}
+
 @Component({
   selector: 'login-register',
   templateUrl: './login-register.component.html',
@@ -29,32 +40,52 @@ export class LoginRegisterComponent implements OnInit {
     forgotPassword: 'Forgot Password',
     register: 'Register'
   }
+
+  @ViewChild('form') form: any;
+
+  authError = new InterceptorMessage();
   newUserText: FormText = new FormText(this.formType.register, 'Submit', 'Have an account?', 'Sign in here');
   signInText: FormText = new FormText(this.formType.signIn, 'Sign In', 'Need to Register?', 'Register here');
   forgotPasswordText: FormText = new FormText(this.formType.forgotPassword, 'Send Recovery Email', 'Have an account?', 'Sign in here');
-
   formText: FormText;
-
-
-  headerText: string;
-  submitText: string;
-  formHelperText: string;
-  redirectText: string;
-
   userForm: FormGroup;
   signIn: boolean;
   newUser: boolean;
   forgotPassword: boolean;
-  constructor() { }
+
+  constructor(private authService: AuthDataService, private interceptorMsgService: InterceptorMessageServiceService) { }
 
   ngOnInit(): void {
     this.newUser = false;
     this.resetFormTo(this.formType.signIn);
+    // this.interceptorMsgService.message.subscribe(message => {
+    //   this.authError.message = message;
+    // });
+
+    this.interceptorMsgService.status.subscribe(status => {
+      this.authError.status = status;
+    });
   }
 
-  /* FOR TESTING */
+  ngOnDestroy(): void {
+    //this.interceptorMsgService.message.unsubscribe();
+    this.interceptorMsgService.status.unsubscribe();
+  }
+
   onSubmit() {
-    console.log(this.userForm)
+    if (this.newUser) {
+      const username = this.userForm.controls['usernameFormControl'].value;
+      const password = this.userForm.controls['passwordFormControl'].value;
+      const email = this.userForm.controls['emailFormControl'].value;
+      const newUserRequest = new UserRequest(username, email, password);
+      this.authService.registerNewUser(newUserRequest);
+    }
+    else if (this.signIn) {
+      const email = this.userForm.controls['emailFormControl'].value;
+      const password = this.userForm.controls['passwordFormControl'].value;
+      const loginRequest: LoginRequest = new LoginRequest(email, password);
+      this.authService.login(loginRequest);
+    }
   }
 
   passwordMatchingValidatior: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
@@ -68,7 +99,43 @@ export class LoginRegisterComponent implements OnInit {
     if (this.newUser) { this.userForm.controls['confirmPasswordFormControl'].updateValueAndValidity(); }
   }
 
+  getAuthErrorMsg(code: number): string {
+    let msg = null;
+    switch(code) {
+      case(401):
+        msg = "An invalid password was provided!";
+        break;
+      case(404):
+        msg = "An invalid email was provided!";
+        break;
+      case(409):
+        msg = "That email is already in use!";
+        break;
+      default:
+        msg = 'An unexpected error ocurred!';
+    }
+    return msg;
+  }
+
+  getRedirectLocation(): void {
+    this.signIn ? this.resetFormTo(this.formType.register) : this.resetFormTo(this.formType.signIn);
+  }
+
+  goToForgotPassword(): void {
+    this.resetFormTo(this.formType.forgotPassword);
+  }
+
+  getAuthErrorStatus(): boolean {
+    return (this.authError.status) ? true : false;
+  }
+
+  resetAuthError(): void {
+    this.interceptorMsgService.setStatus(null);
+    this.interceptorMsgService.setMessage(null);
+  }
+
   resetFormTo(formType: string): void {
+    this.resetAuthError();
     switch(formType) {
       case this.formType.forgotPassword: {
         this.formText = this.forgotPasswordText;
@@ -104,14 +171,7 @@ export class LoginRegisterComponent implements OnInit {
         break;
       }
     }
-  }
-
-  getRedirectLocation(): void {
-    this.signIn ? this.resetFormTo(this.formType.register) : this.resetFormTo(this.formType.signIn);
-  }
-
-  goToForgotPassword(): void {
-    this.resetFormTo(this.formType.forgotPassword);
+    this.form?.resetForm();
   }
 
   /* Notes

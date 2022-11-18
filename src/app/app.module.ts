@@ -12,6 +12,8 @@ import { WixossDeckComponent } from './components/wixoss-decks/wixoss-deck/wixos
 import { LoginPageComponent } from './components/page-components/login-page/login-page.component';
 import { NoPageFoundComponent } from './components/page-components/no-page-found/no-page-found.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorCatchingInterceptorInterceptor } from './interceptors/error-catching-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,14 @@ import { LoginRegisterComponent } from './components/login-register/login-regist
     BrowserModule,
     AppMaterialModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: ErrorCatchingInterceptorInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

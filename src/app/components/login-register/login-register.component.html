@@ -1,7 +1,7 @@
 <div class="loginRegisterContainer">
     <div id="loginRegisterContents">
         <h1 class="userFormHeader">{{formText.headerText}}</h1>
-        <form id="userFormGroup" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <form id="userFormGroup" [formGroup]="userForm" (ngSubmit)="onSubmit()" #form="ngForm">
             <div *ngIf="newUser" id="usernameField" class="userInputField">
                 <mat-form-field class="" appearance="fill">
                     <mat-label>Username</mat-label>
@@ -73,7 +73,9 @@
             >
                 {{formText.submitButtonText}}
             </button>
+            <div *ngIf="getAuthErrorStatus()" class="auth-error">{{getAuthErrorMsg(authError.status)}}</div>
         </form>
+
         <div class="formHelperText">
             {{formText.formHelperText}} 
             <button
