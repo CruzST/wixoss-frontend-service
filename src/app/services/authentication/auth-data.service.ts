@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginRequest } from 'src/app/dto/payloads/loginRequest';
 import { User } from 'src/app/dto/models/user';
+import { AuthPayload } from 'src/app/dto/payloads/authPayload';
 
 
 @Injectable({
@@ -24,7 +25,7 @@ export class AuthDataService {
     });
   }
 
-  // Using basic Auth
+  // Method 1 Using basic Auth
   // login(loginRequest: LoginRequest) {
   //   let httpHeaders = new HttpHeaders({});
   //   const creds = window.btoa(`${loginRequest.getEmail()}:${loginRequest.getPassword()}`);
@@ -39,7 +40,7 @@ export class AuthDataService {
   //   });
   // }
 
-  // Using custom endpoint and auth logic
+  // Method 2 Using custom endpoint and auth logic
   login(loginRequest: LoginRequest) {
     let httpHeaders = new HttpHeaders({});
     const creds = window.btoa(`${loginRequest.getEmail()}:${loginRequest.getPassword()}`);
@@ -47,8 +48,9 @@ export class AuthDataService {
     this.http.get(this.authenticationEndpoint + '/login', {headers : httpHeaders, observe: 'response'})
     .subscribe((resp: any) => {
       console.log('resp', resp)
-        const user: User = resp.body as User;
-        const jwt: string = resp.headers.get('Authorization') ?? '';
+      console.log(resp)
+      const authPayload: AuthPayload = resp.body;
+        const jwt: string = authPayload.token;
         localStorage.setItem('authToken', jwt);
     });
   }
