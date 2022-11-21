@@ -1,1 +1,12 @@
-<h1>ERROR No page found matching that url</h1>
+<div id="noPageFoundContainer">
+    <h1 id="header" class="mat-display-4">404</h1>
+    <p class="mat-headline">That page you are looking for doesn't exist</p>
+    <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="['']"
+    >
+        Go Back Home
+    </button>
+</div>
+

@@ -1,15 +1,43 @@
-<mat-toolbar class="mat-toolbar mat-primary">
-  <button
+<mat-toolbar class="mat-toolbar mat-primary navbar-container">
+    <!-- Menu Button should not show unless screen is smol -->
+    <button
     mat-icon-button
     type="button"
     class="mat-focus-indicator mat-icon-button mat-button-base"
     aria-label="Example icon-button with menu icon"
-  >
+    >
     <mat-icon class="mat-icon notranslate material-icons mat-icon-no-color">menu</mat-icon>
-  </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-  <mat-icon class="mat-icon notranslate material-icons mat-icon-no-color">favorite</mat-icon>
-  <mat-icon class="mat-icon notranslate material-icons mat-icon-no-color">share</mat-icon>
-  
+    </button>
+    <h1 id="logo"><a [routerLink]="['']">Wixoss Deck Builder</a></h1>
+    <div id="line-bar">&nbsp;</div>
+    <ul>
+        <li class="navbar-item-left">
+            <button
+                mat-button
+                [routerLink]="['deckBuilder']"
+                routerLinkActive="active"
+            >
+                Deck Builder
+            </button>
+        </li>
+        <li class="navbar-item-left">
+            <button
+                mat-button
+                routerLink="/browseCards"
+                routerLinkActive="active"
+            >
+                View Cards
+            </button>
+        </li>
+        <span class="example-spacer"></span>
+        <li class="navbar-item-right">
+            <button
+                mat-button
+                routerLink="/login"
+                routerLinkActive="active"
+            >
+                Login Placeholder
+            </button>
+        </li>
+    </ul>  
 </mat-toolbar>

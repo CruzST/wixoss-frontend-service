@@ -1,3 +1,40 @@
-.example-spacer {
-    flex: 1 1 auto;
+.navbar-container {
+    a {
+        color: inherit; /* blue colors for links too */
+        text-decoration: inherit; /* no underline */
+    }
+
+    #line-bar {
+        margin-left: 1rem;
+        border-left: 2px solid white;
+        height: 2.5rem;
+    }
+
+    ul {
+        display: flex;
+        padding: 0;
+
+        .example-spacer {
+            flex: 1 1 auto;
+        }
+
+        width: 100%;
+
+        .navbar-item-left {
+            margin-left: 1rem; 
+        }
+
+        .navbar-item-right {
+            margin-right: 1rem;
+        }
+
+        li {
+            display: inline;
+        }
+
+        button.active {
+            background-color: #44ddff;
+            color: black;
+        }
+    }
 }
