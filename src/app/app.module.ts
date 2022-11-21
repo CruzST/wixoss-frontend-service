@@ -14,6 +14,7 @@ import { NoPageFoundComponent } from './components/page-components/no-page-found
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorCatchingInterceptorInterceptor } from './interceptors/error-catching-interceptor.interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ErrorCatchingInterceptorInterceptor } from './interceptors/error-catchi
     AppMaterialModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
