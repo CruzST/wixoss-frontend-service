@@ -1,4 +1,4 @@
-enum Team {
+export enum Team {
     ANCIENT_SURPRISE = 'Ancient Surprise',
     CARD_JOCKEY = 'Card Jockey',
     DXM = 'DEUS・EX・MACHINA',

@@ -1,9 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class DeckDataService {
-
-  constructor() { }
+    deckEndpoint: string = environment.backendServiceLocal + '/deck';
+    constructor(private http: HttpClient) {}
+    getAllDecks(): Observable<any> {
+        const headers = { 'content-type': 'application/json' };
+        return this.http.get(this.deckEndpoint + '/all', {
+            headers: headers,
+        });
+    }
 }

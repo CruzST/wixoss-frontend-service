@@ -1,0 +1,15 @@
+<div class="deckContainer">
+    <h1>{{deck.deckName}}</h1>
+    <div id="lrigDeckContainer">
+        <div *ngFor="let cardAndAmount of deck.lrigDeckContent">
+            <div>{{cardAndAmount.card.name}}</div>
+            <div>{{cardAndAmount.amount}}</div>
+        </div>
+    </div>
+    <div id="mainDeckContainer">
+
+    </div>
+    <!--
+        Make a loading thing
+    -->
+</div>

@@ -1,4 +1,4 @@
-enum CardSet {
+export enum CardSet {
     P00 = "INTERLUDE DIVA",
     P01 = "GLOWING DIVA",
     P02 = "CHANGING DIVA",

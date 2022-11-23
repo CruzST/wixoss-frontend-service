@@ -1,4 +1,4 @@
-enum Rarity {
+export enum Rarity {
     STRUCTURE_DECK = 'Structure Deck',
     LRIG = 'LRIG',
     PIECE = 'Piece',

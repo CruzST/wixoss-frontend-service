@@ -1,4 +1,4 @@
-enum LrigTypeOrClass {
+export enum LrigTypeOrClass {
     IT_ANGEL = 'Idol Tone:Angel',
     IT_BRAVE = 'Idol Tone:Brave',
     IT_DEMON = 'Idol Tone:Demon',

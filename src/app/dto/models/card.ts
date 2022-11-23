@@ -1,3 +1,9 @@
+import { CardType } from "../enum/cardType";
+import { Colors } from "../enum/color";
+import { LrigTypeOrClass } from "../enum/lrigTypeOrClass";
+import { Rarity } from "../enum/rarity";
+import { Team } from "../enum/team";
+import { Timing } from "../enum/timing";
 import { Ability } from "./ability";
 import { ColorCost } from "./colorCost";
 import { Image } from "./image";

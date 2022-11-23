@@ -1,4 +1,4 @@
-enum CardType {
+export enum CardType {
     ASSIST_LRIG = 'Assist LRIG',
     LRIG = 'LRIG',
     PIECE = 'Piece',
