@@ -19,21 +19,22 @@ export class ErrorCatchingInterceptorInterceptor implements HttpInterceptor {
             .pipe(
                 catchError((error: HttpErrorResponse) => {
                     let errorMsg: string;
-                    let handleErrorFlag: boolean = false;
                     if (error.error instanceof ErrorEvent) {
                         // Client Side Error
                         errorMsg = `Error: ${error.error.message}`;
                     } else {
                         // Server Side error
                         errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
-                        handleErrorFlag = this.handleServerError(error);
+                        
                     }
+                    this.handleError(error);
+                    console.error(error)
                     return throwError(() => error);
                 })
             )
     }
 
-    private handleServerError(error: HttpErrorResponse): boolean {
+    private handleError(error: HttpErrorResponse): boolean {
         let flag: boolean = false;
         if (error) {
             this.interceptorMsgService.setStatus(error.status);  
