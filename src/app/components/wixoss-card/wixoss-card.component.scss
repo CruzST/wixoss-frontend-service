@@ -1,26 +1,36 @@
 .card {
-    padding: 0.5rem 0.5rem 0 0.5rem;
+    padding: 0.5rem;
     margin-bottom: 1rem;
 
-    .mat-card-title {
+    .mat-card-title  {
+        width: 100%;
         font-size: 1rem;
         overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
+        @supports (-webkit-line-clamp: 2) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: initial;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
     }
 
-    #cardImage, #cardInfo {
-        margin-bottom: .5rem;
-        width: 145px;
-    }
-    
-    #cardInfo {
-        height: 64px;
-    }
-    
-    #cardImage {
-        height: 200px;
+    .no-margin {
         margin: 0;
     }
+
+    .vertical {
+        width: 145px;
+    }
+
+    .horizontal {
+        width: 280px;
+    }
+
 }
 
 

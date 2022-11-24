@@ -4,12 +4,14 @@
         [src]="cardImgPathTEMP"
         alt="Card alt text TODO"
         id="cardImage"
+        class="no-margin"
+        [class]="cardTypeClass"
     >
-    <div id="cardInfo">
-        <mat-card-title class="mat-card-title">
+    <div id="cardInfo" [class]="cardTypeClass">
+        <mat-card-title class="mat-card-title no-margin">
             {{card.name}}
         </mat-card-title>
-        <mat-card-subtitle *ngIf="amount">
+        <mat-card-subtitle *ngIf="amount" class="no-margin">
             Amount: {{amount}}
         </mat-card-subtitle>
     </div>
