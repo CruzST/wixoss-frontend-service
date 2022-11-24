@@ -15,6 +15,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorCatchingInterceptorInterceptor } from './interceptors/error-catching-interceptor.interceptor';
 import { RouterModule } from '@angular/router';
 import { DeckBuilderPageComponent } from './components/page-components/deck-builder-page/deck-builder-page.component';
+import { WixossCardComponent } from './components/wixoss-card/wixoss-card.component';
+import { DeckViewPageComponent } from './components/page-components/deck-view-page/deck-view-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { DeckBuilderPageComponent } from './components/page-components/deck-buil
     LoginPageComponent,
     NoPageFoundComponent,
     LoginRegisterComponent,
-    DeckBuilderPageComponent
+    DeckBuilderPageComponent,
+    WixossCardComponent,
+    DeckViewPageComponent
   ],
   imports: [
     BrowserModule,

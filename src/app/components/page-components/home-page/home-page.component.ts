@@ -15,7 +15,6 @@ export class HomePageComponent implements OnInit {
 
     ngOnInit(): void {
         this.deckService.getAllDecks().subscribe((resp: any) => {
-            console.log('deck endpoint', resp)
             this.decks = resp;
         })
     }

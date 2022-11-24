@@ -1,0 +1,10 @@
+.deckContainer {
+    #lrigDeckContainer, #mainDeckContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .tempsize {
+        margin: 0 .5rem 0 .5rem;
+    }
+}

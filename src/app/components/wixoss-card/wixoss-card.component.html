@@ -1,0 +1,16 @@
+<mat-card class="card" [title]="card.name">
+    <img
+        mat-card-image
+        [src]="cardImgPathTEMP"
+        alt="Card alt text TODO"
+        id="cardImage"
+    >
+    <div id="cardInfo">
+        <mat-card-title class="mat-card-title">
+            {{card.name}}
+        </mat-card-title>
+        <mat-card-subtitle *ngIf="amount">
+            Amount: {{amount}}
+        </mat-card-subtitle>
+    </div>
+</mat-card>

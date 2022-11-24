@@ -1,0 +1,28 @@
+.card {
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    margin-bottom: 1rem;
+
+    .mat-card-title {
+        font-size: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    #cardImage, #cardInfo {
+        margin-bottom: .5rem;
+        width: 145px;
+    }
+    
+    #cardInfo {
+        height: 64px;
+    }
+    
+    #cardImage {
+        height: 200px;
+        margin: 0;
+    }
+}
+
+
+
+

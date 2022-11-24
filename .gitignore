@@ -44,4 +44,4 @@ Thumbs.db
 # Do Not Include
 package-lock.json
 src/environments/environment.ts
-src/app/resources/images
+src/assets/images

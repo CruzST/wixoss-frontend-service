@@ -1,15 +1,17 @@
 <div class="deckContainer">
     <h1>{{deck.deckName}}</h1>
+    <h2>LRIG Deck</h2>
     <div id="lrigDeckContainer">
-        <div *ngFor="let cardAndAmount of deck.lrigDeckContent">
-            <div>{{cardAndAmount.card.name}}</div>
-            <div>{{cardAndAmount.amount}}</div>
+        <!-- This will have to be in a grid like thing, probably make a reusable component -->
+        <div *ngFor="let cardAndAmount of deck.lrigDeckContent" class="tempsize">
+            <wixoss-card [card]="cardAndAmount.card" [amount]="cardAndAmount.amount || null"></wixoss-card>
         </div>
     </div>
-    <div id="mainDeckContainer">
 
+    <h2>Main Deck</h2>
+    <div id="mainDeckContainer">
+        <div *ngFor="let cardAndAmount of deck.mainDeckContent" class="tempsize">
+            <wixoss-card [card]="cardAndAmount.card" [amount]="cardAndAmount.amount || null"></wixoss-card>
+        </div>
     </div>
-    <!--
-        Make a loading thing
-    -->
 </div>
