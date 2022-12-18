@@ -1,0 +1,29 @@
+
+#cardDialogContainer{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+
+    img.horizontal {
+        height: 25rem;
+    }
+
+    img.vertical {
+        height: 35rem;
+    }
+
+    #rightCol {
+        // display: flex;
+        // flex-direction: row;
+        // flex-wrap: wrap;
+        // td div {
+        //     word-wrap: break-word;
+        // }
+        padding-left: 1rem;
+    }
+
+    #leftCol {
+        padding-right: 1rem;
+    }
+}

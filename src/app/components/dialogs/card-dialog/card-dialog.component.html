@@ -1,0 +1,21 @@
+<div id="cardDialogContainer">
+    <div id="leftCol">
+        <img
+        [src]="cardImgPathTEMP"
+        alt="Card alt text TODO"
+        id="cardImageDialog"
+        [class]="cardTypeClass"
+        >
+    </div>
+    <div id="rightCol">
+        <h1>{{card.name}}</h1>
+        <h3>{{card.id}}</h3>
+        <hr>
+        <table>
+            <tr *ngFor="let cardInfo of cardInfoRows">
+                <th>{{cardInfo.header | titlecase}}</th>
+                <td>{{cardInfo.data}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
