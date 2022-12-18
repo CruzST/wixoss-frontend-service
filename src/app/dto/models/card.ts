@@ -14,11 +14,11 @@ export class Card {
     name: string;
     rarity: Rarity[];
     cardType: CardType;
-    LrigTypeOrClass: LrigTypeOrClass;
+    lrigTypeOrClass: LrigTypeOrClass;
     colors: Colors[];
     level: number;
     growCost: ColorCost;
-    cost: ColorCost;
+    cost: ColorCost[];
     limit: string;
     power: number;
     team: Team;

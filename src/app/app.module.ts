@@ -17,6 +17,8 @@ import { RouterModule } from '@angular/router';
 import { DeckBuilderPageComponent } from './components/page-components/deck-builder-page/deck-builder-page.component';
 import { WixossCardComponent } from './components/wixoss-card/wixoss-card.component';
 import { DeckViewPageComponent } from './components/page-components/deck-view-page/deck-view-page.component';
+import { CardDialogComponent } from './components/dialogs/card-dialog/card-dialog.component';
+import { CardFilter } from './pipes/card-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { DeckViewPageComponent } from './components/page-components/deck-view-pa
     LoginRegisterComponent,
     DeckBuilderPageComponent,
     WixossCardComponent,
-    DeckViewPageComponent
+    DeckViewPageComponent,
+    CardDialogComponent,
+    CardFilter
   ],
   imports: [
     BrowserModule,

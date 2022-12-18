@@ -16,7 +16,6 @@ export class DeckViewPageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private deckService: DeckDataService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log('in init')
     this.deckId = this.route.snapshot.paramMap.get('id');
     this.deckService.getSingleDeck(this.deckId)
     .subscribe({

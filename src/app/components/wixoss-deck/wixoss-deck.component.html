@@ -1,17 +1,66 @@
 <div class="deckContainer">
-    <h1>{{deck.deckName}}</h1>
+    <h1>{{deck.name}}</h1>
     <h2>LRIG Deck</h2>
     <div id="lrigDeckContainer">
         <!-- This will have to be in a grid like thing, probably make a reusable component -->
         <div *ngFor="let cardAndAmount of deck.lrigDeckContent" class="tempsize">
-            <wixoss-card [card]="cardAndAmount.card" [amount]="cardAndAmount.amount || null"></wixoss-card>
+            <wixoss-card
+                [card]="cardAndAmount.card"
+                [amount]="cardAndAmount.amount || null"
+                (click)="openCardDialog(cardAndAmount.card)"
+            >
+            </wixoss-card>
         </div>
     </div>
 
     <h2>Main Deck</h2>
     <div id="mainDeckContainer">
-        <div *ngFor="let cardAndAmount of deck.mainDeckContent" class="tempsize">
-            <wixoss-card [card]="cardAndAmount.card" [amount]="cardAndAmount.amount || null"></wixoss-card>
+        <div class="mainDeckSection">
+            <h3>Level 1</h3>
+            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'level': '1'" class="tempsize">
+                <wixoss-card
+                    [card]="cardAndAmount.card"
+                    [amount]="cardAndAmount.amount || null"
+                    (click)="openCardDialog(cardAndAmount.card)"
+                >
+                </wixoss-card>
+            </div>
+        </div>
+        
+        <div class="mainDeckSection">
+            <h3>Level 2</h3>
+            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'level': '2'" class="tempsize">
+                <wixoss-card
+                    [card]="cardAndAmount.card"
+                    [amount]="cardAndAmount.amount || null"
+                    (click)="openCardDialog(cardAndAmount.card)"
+                >
+                </wixoss-card>
+            </div>
+        </div>
+        
+        <div class="mainDeckSection">
+            <h3>Level 3</h3>
+            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'level': '3'" class="tempsize">
+                <wixoss-card
+                    [card]="cardAndAmount.card"
+                    [amount]="cardAndAmount.amount || null"
+                    (click)="openCardDialog(cardAndAmount.card)"
+                >
+                </wixoss-card>
+            </div>
+        </div>
+
+        <div class="mainDeckSection">
+            <h3>Spells</h3>
+            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'cardType': 'SPELL'" class="tempsize">
+                <wixoss-card
+                    [card]="cardAndAmount.card"
+                    [amount]="cardAndAmount.amount || null"
+                    (click)="openCardDialog(cardAndAmount.card)"
+                >
+                </wixoss-card>
+            </div>
         </div>
     </div>
 </div>

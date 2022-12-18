@@ -24,11 +24,7 @@ export class WixossCardComponent implements OnInit {
   ngOnInit(): void {
     this.cardSerial = `${this.card.serial.formatSet}-${this.card.serial.cardSet}-${this.card.serial.cardNumber}[EN]`;
     this.cardImgPathTEMP = this.deckService.getCardImage(this.cardSerial);
-    if (this.card.cardType.toLocaleLowerCase() === CardType.PIECE.toLocaleLowerCase()) {
-      console.log('true')
-    }
     this.cardTypeClass = this.card.cardType.toLocaleLowerCase() === CardType.PIECE.toLocaleLowerCase() ? 'horizontal' : 'vertical';
-    console.log(this.cardImgPathTEMP)
   }
 
 }

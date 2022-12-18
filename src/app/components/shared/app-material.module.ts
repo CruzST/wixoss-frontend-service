@@ -5,7 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
 
   @NgModule({
     imports: [
@@ -16,7 +18,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
       MatFormFieldModule,
       MatInputModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      MatDialogModule,
+      MatTableModule
     ],
     exports: [
       MatToolbarModule,
@@ -26,7 +30,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
       MatFormFieldModule,
       MatInputModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      MatDialogModule,
+      MatTableModule
     ]
   })
   export class AppMaterialModule { }
