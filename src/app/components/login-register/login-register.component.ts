@@ -158,6 +158,9 @@ export class LoginRegisterComponent implements OnInit {
             case 409:
                 msg = 'That email is already in use!';
                 break;
+            case 400:
+                msg = 'Username not allowed!';
+                break;
             default:
                 msg = this.authError.message;
         }

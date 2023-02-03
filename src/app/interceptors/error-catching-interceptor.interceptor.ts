@@ -18,18 +18,9 @@ export class ErrorCatchingInterceptorInterceptor implements HttpInterceptor {
         return next.handle(request)
             .pipe(
                 catchError((error: HttpErrorResponse) => {
-                    let errorMsg: string;
-                    if (error.error instanceof ErrorEvent) {
-                        // Client Side Error
-                        errorMsg = `Error: ${error.error.message}`;
-                    } else {
-                        // Server Side error
-                        errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
-                        
-                    }
                     this.handleError(error);
                     console.error(error)
-                    return throwError(() => error);
+                    return throwError(() => 'Unexpected error happed: ' + error);
                 })
             )
     }
@@ -37,7 +28,7 @@ export class ErrorCatchingInterceptorInterceptor implements HttpInterceptor {
     private handleError(error: HttpErrorResponse): boolean {
         let flag: boolean = false;
         if (error) {
-            this.interceptorMsgService.setStatus(error.status);  
+            this.interceptorMsgService.setStatus(error.status);
         }
         return flag;
     }
