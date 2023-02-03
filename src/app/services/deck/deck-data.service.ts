@@ -27,6 +27,13 @@ export class DeckDataService {
         });
     }
 
+    getDeckMetaData(id: string): Observable<any> {
+        const headers = { 'content-type': 'application/json' };
+        return this.http.get(`${this.deckEndpoint}/metaData/${id}`, {
+            headers: headers
+        });
+    }
+
     getCardImage(serial: string): string {
         return `${this.cardImgEndpointTEMP}/${serial}.jpg`;
     }

@@ -1,29 +1,58 @@
 
 #cardDialogContainer{
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: flex;
 
+    mat-dialog-content {
+        display: inline-flex;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        img.horizontal {
+            height: 25rem;
+        }
+    
+        img.vertical {
+            height: 35rem;
+        }
+    
+        #rightCol {
+            padding-left: 1rem;
+            max-width: 32rem;
+            h1 {
+                margin-bottom: 0;
+            }
+            
+            h3 {
+                margin-bottom: .5rem;
+            }
 
-    img.horizontal {
-        height: 25rem;
+            .tableHeader {
+                text-align: left;
+                vertical-align: top;
+                white-space: nowrap;
+                padding-right: 1rem;
+            }
+    
+            .tableRow {
+                margin-bottom: .5rem;
+            }
+
+            .tableDataSpan {
+                white-space: pre-wrap;
+            }   
+        }
+    
+        #leftCol {
+            padding-right: 1rem;
+        }
+        
     }
 
-    img.vertical {
-        height: 35rem;
-    }
-
-    #rightCol {
-        // display: flex;
-        // flex-direction: row;
-        // flex-wrap: wrap;
-        // td div {
-        //     word-wrap: break-word;
-        // }
-        padding-left: 1rem;
-    }
-
-    #leftCol {
-        padding-right: 1rem;
+    /* MEDIA QUERIES */
+    @media screen and (max-width: 1262px) {
+        #rightCol {
+            max-width: 100% !important;
+            width: 100%;
+        }
+        
     }
 }
