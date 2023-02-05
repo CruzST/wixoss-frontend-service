@@ -12,4 +12,36 @@ html {
         flex-direction: column;
         height: 100%;
     }
+
+    
+    wixoss-card, wixoss-deck-meta-data {
+        .card {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            .no-margin {
+                margin: 0;
+            }
+    
+            .mat-card-title  {
+                height: 40px;
+                width: 100%;
+                font-size: 1rem;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                @supports (-webkit-line-clamp: 2) {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: initial;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                }
+            }
+        }
+    }
+
+    .margin-left-right {
+        margin: 0 .5rem 0 .5rem;
+    }
 }

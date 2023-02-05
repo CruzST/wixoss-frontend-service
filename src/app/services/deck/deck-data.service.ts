@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DeckMetaData } from 'src/app/dto/models/deckMetaData';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -16,6 +17,13 @@ export class DeckDataService {
     getAllDecks(): Observable<any> {
         const headers = { 'content-type': 'application/json' };
         return this.http.get(this.deckEndpoint + '/all', {
+            headers: headers
+        });
+    }
+
+    getAllMetaData(): Observable<any> {
+        const headers = { 'content-type': 'application/json' };
+        return this.http.get(this.deckEndpoint + '/allMetaData', {
             headers: headers
         });
     }
@@ -36,5 +44,9 @@ export class DeckDataService {
 
     getCardImage(serial: string): string {
         return `${this.cardImgEndpointTEMP}/${serial}.jpg`;
+    }
+
+    getDeckCoverImage(serial?: string): string {
+        return `${this.cardImgEndpointTEMP}/PLACE_HOLDER.jpg`;
     }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Deck } from 'src/app/dto/models/deck';
+import { DeckMetaData } from 'src/app/dto/models/deckMetaData';
 import { DeckDataService } from 'src/app/services/deck/deck-data.service';
 
 @Component({
@@ -9,12 +10,13 @@ import { DeckDataService } from 'src/app/services/deck/deck-data.service';
 })
 export class HomePageComponent implements OnInit {
 
-    decks: Deck[];
+    decks: DeckMetaData[];
 
     constructor(private deckService: DeckDataService) {}
 
     ngOnInit(): void {
-        this.deckService.getAllDecks().subscribe((resp: any) => {
+        this.deckService.getAllMetaData().subscribe((resp: any) => {
+            console.log(resp)
             this.decks = resp;
         })
     }

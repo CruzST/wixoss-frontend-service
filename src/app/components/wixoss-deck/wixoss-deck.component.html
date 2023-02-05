@@ -3,7 +3,7 @@
     <h2>LRIG Deck</h2>
     <div id="lrigDeckContainer">
         <!-- This will have to be in a grid like thing, probably make a reusable component -->
-        <div *ngFor="let cardAndAmount of deck.lrigDeckContent" class="tempsize">
+        <div *ngFor="let cardAndAmount of deck.lrigDeckContent" class="margin-left-right">
             <wixoss-card
                 [card]="cardAndAmount.card"
                 [amount]="cardAndAmount.amount || null"
@@ -17,7 +17,7 @@
     <div id="mainDeckContainer">
         <div class="mainDeckSection">
             <h3>Level 1</h3>
-            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'level': '1'" class="tempsize">
+            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'level': '1'" class="margin-left-right">
                 <wixoss-card
                     [card]="cardAndAmount.card"
                     [amount]="cardAndAmount.amount || null"
@@ -29,7 +29,7 @@
         
         <div class="mainDeckSection">
             <h3>Level 2</h3>
-            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'level': '2'" class="tempsize">
+            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'level': '2'" class="margin-left-right">
                 <wixoss-card
                     [card]="cardAndAmount.card"
                     [amount]="cardAndAmount.amount || null"
@@ -41,7 +41,7 @@
         
         <div class="mainDeckSection">
             <h3>Level 3</h3>
-            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'level': '3'" class="tempsize">
+            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'level': '3'" class="margin-left-right">
                 <wixoss-card
                     [card]="cardAndAmount.card"
                     [amount]="cardAndAmount.amount || null"
@@ -53,7 +53,7 @@
 
         <div class="mainDeckSection">
             <h3>Spells</h3>
-            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'cardType': 'SPELL'" class="tempsize">
+            <div *ngFor="let cardAndAmount of deck.mainDeckContent | cardFilter:'cardType': 'SPELL'" class="margin-left-right">
                 <wixoss-card
                     [card]="cardAndAmount.card"
                     [amount]="cardAndAmount.amount || null"

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { Deck } from 'src/app/dto/models/deck';
-import { deckMetaData } from 'src/app/dto/models/deckMetaData';
+import { DeckMetaData } from 'src/app/dto/models/deckMetaData';
 import { DeckDataService } from 'src/app/services/deck/deck-data.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { DeckDataService } from 'src/app/services/deck/deck-data.service';
 export class DeckViewPageComponent implements OnInit {
   deckId: string;
   deck: Deck;
-  deckMetaData: deckMetaData;
+  deckMetaData: DeckMetaData;
 
   constructor(private route: ActivatedRoute, private deckService: DeckDataService, private router: Router) { }
 

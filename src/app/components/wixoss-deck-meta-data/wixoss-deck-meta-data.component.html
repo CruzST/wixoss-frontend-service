@@ -1,0 +1,18 @@
+<mat-card class="card">
+    <img
+        mat-card-image
+        [src]="cardImgPathTEMP"
+        alt="Card alt text TODO"
+        id="cardImage"
+        class="no-margin deckImage"
+        >
+    <div class="deckInfo">
+        <mat-card-title class="mat-card-title no-margin">
+            <a [routerLink]="['/deck', deckMetaData.id]">
+                {{deckMetaData.deckName}}
+            </a>
+        </mat-card-title>
+        <p>Owner: {{deckMetaData.wixossUser?.username || 'Unknown'}}</p>
+        <p>Views: {{deckMetaData.views}}</p>
+    </div>
+</mat-card>

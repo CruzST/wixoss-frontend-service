@@ -1,7 +1,9 @@
 <div>
     <p>home-page works!</p>
-    <section>
-        RANDOM DECKS section
+    <section class="deckMetaDataRows">
+        <div *ngFor="let deck of decks" class="margin-left-right">
+            <wixoss-deck-meta-data [deckMetaData]="deck"></wixoss-deck-meta-data>
+        </div>
     </section>
 </div>
 

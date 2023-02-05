@@ -5,14 +5,10 @@
         flex-wrap: wrap;
     }
     #mainDeckContainer {
-        //display: flex;
         .mainDeckSection {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
         }
-    }
-    .tempsize {
-        margin: 0 .5rem 0 .5rem;
     }
 }

@@ -1,28 +1,7 @@
+/**
+    NOTE: SHARES CSS WITH THE WIXOSS-DECK-META-DATA COMPONENT, SEE STYLE.SCSS
+**/
 .card {
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-
-    .mat-card-title  {
-        height: 40px;
-        width: 100%;
-        font-size: 1rem;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        @supports (-webkit-line-clamp: 2) {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: initial;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-        
-    }
-
-    .no-margin {
-        margin: 0;
-    }
 
     .vertical {
         width: 145px;
