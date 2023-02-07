@@ -28,14 +28,14 @@ export class DeckDataService {
         });
     }
 
-    getSingleDeck(id: string): Observable<any> {
+    getSingleDeck(id: number): Observable<any> {
         const headers = { 'content-type': 'application/json' };
         return this.http.get(`${this.deckEndpoint}/${id}`, {
             headers: headers
         });
     }
 
-    getDeckMetaData(id: string): Observable<any> {
+    getDeckMetaData(id: number): Observable<any> {
         const headers = { 'content-type': 'application/json' };
         return this.http.get(`${this.deckEndpoint}/metaData/${id}`, {
             headers: headers
@@ -48,5 +48,12 @@ export class DeckDataService {
 
     getDeckCoverImage(serial?: string): string {
         return `${this.cardImgEndpointTEMP}/PLACE_HOLDER.jpg`;
+    }
+
+    incrementDeckViewCount(id: number): void {
+        const headers = { 'content-type': 'application/json' };
+        this.http.put<number>(`${this.deckEndpoint}/incrementDeckViewCount/${id}`, {
+            headers: headers
+        }).subscribe();
     }
 }

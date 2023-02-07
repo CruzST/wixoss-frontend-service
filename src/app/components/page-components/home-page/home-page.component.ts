@@ -16,8 +16,10 @@ export class HomePageComponent implements OnInit {
 
     ngOnInit(): void {
         this.deckService.getAllMetaData().subscribe((resp: any) => {
-            console.log(resp)
+            //console.log(resp)
             this.decks = resp;
+            // TODO: Until a real sorting is planned out, the latest will be showed
+            this.decks.sort((b, a) => new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime());
         })
     }
 }

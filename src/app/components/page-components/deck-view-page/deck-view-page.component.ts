@@ -11,18 +11,19 @@ import { DeckDataService } from 'src/app/services/deck/deck-data.service';
   styleUrls: ['./deck-view-page.component.scss']
 })
 export class DeckViewPageComponent implements OnInit {
-  deckId: string;
+  deckId: number;
   deck: Deck;
   deckMetaData: DeckMetaData;
 
   constructor(private route: ActivatedRoute, private deckService: DeckDataService, private router: Router) { }
 
   ngOnInit(): void {
-    this.deckId = this.route.snapshot.paramMap.get('id');
+    this.deckId = parseInt(this.route.snapshot.paramMap.get('id'));
     this.deckService.getSingleDeck(this.deckId)
     .subscribe({
       next: (resp) => {
         this.deck = resp;
+        this.deckService.incrementDeckViewCount(this.deckId);
       },
       error: () => {
         this.router.navigate(['/notFound']);
