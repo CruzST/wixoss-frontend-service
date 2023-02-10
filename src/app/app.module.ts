@@ -20,6 +20,7 @@ import { DeckViewPageComponent } from './components/page-components/deck-view-pa
 import { CardDialogComponent } from './components/dialogs/card-dialog/card-dialog.component';
 import { CardFilter } from './pipes/card-filter.pipe';
 import { WixossDeckMetaDataComponent } from './components/wixoss-deck-meta-data/wixoss-deck-meta-data.component';
+import { UserPageComponent } from './components/page-components/user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { WixossDeckMetaDataComponent } from './components/wixoss-deck-meta-data/
     DeckViewPageComponent,
     CardDialogComponent,
     CardFilter,
-    WixossDeckMetaDataComponent
+    WixossDeckMetaDataComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

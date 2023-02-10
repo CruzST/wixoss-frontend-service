@@ -44,4 +44,10 @@ html {
     .margin-left-right {
         margin: 0 .5rem 0 .5rem;
     }
+
+    .flexRowWrap {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }

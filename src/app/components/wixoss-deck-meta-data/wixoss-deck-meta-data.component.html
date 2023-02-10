@@ -12,7 +12,10 @@
                 {{deckMetaData.deckName}}
             </a>
         </mat-card-title>
-        <p>Owner: {{deckMetaData.wixossUser?.username || 'Unknown'}}</p>
+        <p *ngIf="deckMetaData.wixossUser; else elseBlock">Owner: <a [routerLink]="['/user', deckMetaData.wixossUser.id]">{{deckMetaData.wixossUser.username}}</a></p>
+        <ng-template #elseBlock>
+            <p >Owner: Unknown</p>
+        </ng-template>
         <p>Views: {{deckMetaData.views}}</p>
     </div>
 </mat-card>

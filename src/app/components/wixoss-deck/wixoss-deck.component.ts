@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Card } from 'src/app/dto/models/card';
 import { Deck } from 'src/app/dto/models/deck';
 import { DeckContent } from 'src/app/dto/models/deckContent';
+import { DeckMetaData } from 'src/app/dto/models/deckMetaData';
 import { CardDialogComponent } from '../dialogs/card-dialog/card-dialog.component';
 
 
@@ -14,11 +15,14 @@ import { CardDialogComponent } from '../dialogs/card-dialog/card-dialog.componen
 export class WixossDeckComponent implements OnInit {
     @Input()
     deck: Deck;
+
+    @Input()
+    deckMetaData: DeckMetaData;
     
     constructor(private dialog: MatDialog) {}
 
     ngOnInit(): void {
-
+        console.log('in deck: ', this.deckMetaData)
     }
 
     openCardDialog(card: Card) {

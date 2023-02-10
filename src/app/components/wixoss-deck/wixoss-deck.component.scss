@@ -1,14 +1,22 @@
 .deckContainer {
-    #lrigDeckContainer {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    #mainDeckContainer {
-        .mainDeckSection {
+    .deckContents {
+        #lrigDeckContainer {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
         }
+        #mainDeckContainer {
+            .mainDeckSection {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+    }
+    #deckInfo {
+        h1, h3, p {
+            margin: 0 0 .25rem 0;
+        }
+        padding-bottom: 1rem;
     }
 }

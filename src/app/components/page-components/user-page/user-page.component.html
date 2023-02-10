@@ -1,0 +1,12 @@
+<div class="userPage">
+    <h1>User Name</h1>
+    
+    <section>
+        <h2>Decks</h2>
+        <section class="flexRowWrap">
+            <div *ngFor="let deck of decks" class="margin-left-right">
+                <wixoss-deck-meta-data [deckMetaData]="deck"></wixoss-deck-meta-data>
+            </div>
+        </section>
+    </section>
+</div>

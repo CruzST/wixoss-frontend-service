@@ -14,16 +14,20 @@ export class DeckDataService {
 
     constructor(private http: HttpClient) {}
 
-    getAllDecks(): Observable<any> {
+    getAllDecks(ownerId?: number): Observable<any> {
         const headers = { 'content-type': 'application/json' };
-        return this.http.get(this.deckEndpoint + '/all', {
+        const endpoint = ownerId ? `${this.deckEndpoint}/all?ownerId=${ownerId}` : `${this.deckEndpoint}/all`;
+
+        return this.http.get(endpoint, {
             headers: headers
         });
     }
 
-    getAllMetaData(): Observable<any> {
+    getAllMetaData(ownerId?: number): Observable<any> {
         const headers = { 'content-type': 'application/json' };
-        return this.http.get(this.deckEndpoint + '/allMetaData', {
+        const endpoint = ownerId ? `${this.deckEndpoint}/allMetaData?ownerId=${ownerId}` : `${this.deckEndpoint}/allMetaData`;
+
+        return this.http.get(endpoint, {
             headers: headers
         });
     }

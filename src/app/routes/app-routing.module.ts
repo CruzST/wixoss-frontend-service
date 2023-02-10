@@ -5,6 +5,7 @@ import { DeckViewPageComponent } from "../components/page-components/deck-view-p
 import { HomePageComponent } from "../components/page-components/home-page/home-page.component";
 import { LoginPageComponent } from "../components/page-components/login-page/login-page.component";
 import { NoPageFoundComponent } from "../components/page-components/no-page-found/no-page-found.component";
+import { UserPageComponent } from "../components/page-components/user-page/user-page.component";
 
 
 const appRoutes: Routes = [
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
     {path: 'login', component: LoginPageComponent},
     {path: 'deckBuilder', component: DeckBuilderPageComponent},
     {path: 'deck/:id', component: DeckViewPageComponent},
+    {path: 'user/:id', component: UserPageComponent},
     {path: 'notFound', component: NoPageFoundComponent},
     {path: '**', component:NoPageFoundComponent}
     
